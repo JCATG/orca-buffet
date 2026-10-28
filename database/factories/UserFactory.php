@@ -30,7 +30,19 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'role' => 'funcionario',
+            'ativo' => true,
         ];
+    }
+
+    /**
+     * Indicate that the user is a buffet administrator.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'admin',
+        ]);
     }
 
     /**
