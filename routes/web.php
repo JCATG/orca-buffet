@@ -4,6 +4,7 @@ use App\Http\Controllers\OrcamentoPublicoController;
 use Illuminate\Support\Facades\Route;
 
 Route::livewire('/', 'pages::frontend.home')->name('home');
+Route::livewire('nossa-historia', 'pages::frontend.historia')->name('historia');
 Route::livewire('montar-orcamento', 'pages::frontend.orcamento')->name('orcamento.montar');
 
 Route::get('orcamento/{order:token}', [OrcamentoPublicoController::class, 'show'])->name('orcamento.publico');

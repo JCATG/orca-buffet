@@ -93,10 +93,11 @@ new #[Title('Pedidos')] class extends Component
                     <th class="px-4 py-3 font-medium">Nº</th>
                     <th class="px-4 py-3 font-medium">Cliente</th>
                     <th class="px-4 py-3 font-medium">Evento</th>
-                    <th class="px-4 py-3 font-medium">Data</th>
+                    <th class="px-4 py-3 font-medium">Data do evento</th>
                     <th class="px-4 py-3 font-medium">Convidados</th>
                     <th class="px-4 py-3 font-medium">Total</th>
                     <th class="px-4 py-3 font-medium">Status</th>
+                    <th class="px-4 py-3 font-medium">Data</th>
                     <th class="px-4 py-3"></th>
                 </tr>
             </thead>
@@ -112,6 +113,7 @@ new #[Title('Pedidos')] class extends Component
                         <td class="px-4 py-3">
                             <flux:badge size="sm" :color="$order->status->color()">{{ $order->status->label() }}</flux:badge>
                         </td>
+                        <td class="px-4 py-3">{{ $order->created_at->timezone('America/Sao_Paulo')->format('d/m/Y') }}</td>
                         <td class="px-4 py-3 text-right">
                             <a href="{{ route('admin.orcamento.show', $order) }}" wire:navigate class="inline-flex items-center rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-sm font-medium text-zinc-800 hover:bg-zinc-50">
                                 Abrir
@@ -120,7 +122,7 @@ new #[Title('Pedidos')] class extends Component
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="px-4 py-10 text-center text-zinc-500">Nenhum pedido encontrado.</td>
+                        <td colspan="9" class="px-4 py-10 text-center text-zinc-500">Nenhum pedido encontrado.</td>
                     </tr>
                 @endforelse
             </tbody>
